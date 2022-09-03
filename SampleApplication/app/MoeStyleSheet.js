@@ -1,6 +1,9 @@
 import {StyleSheet} from 'react-native';
 
 const MOEStyles = StyleSheet.create({
+  mainContainer: {
+    marginBottom: 20,
+  },
   title: {
     padding: 12,
     marginTop: 20,
