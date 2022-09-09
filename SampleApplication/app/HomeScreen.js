@@ -107,12 +107,7 @@ const HomeScreen = ({navigation}) => {
         console.log('inbox');
         break;
       case GEOFENCE_MONITOR:
-        if (Platform.OS === 'ios') {
-          ReactMoEGeofence.startGeofenceMonitoring(APP_ID);
-        } else {
-          alert(GEOFENCE_FOR_IOS_MESSAGE);
-        }
-
+        ReactMoEGeofence.startGeofenceMonitoring(APP_ID);
         break;
       case ENABLE_SDK:
         ReactMoE.enableSdk();
