@@ -3,10 +3,10 @@ import {createStackNavigator} from 'react-navigation-stack';
 import HomeScreen from './app/HomeScreen';
 import InAppScreen from './app//inapp/InAppScreen';
 import SelfHandledCampaign from './app//inapp/SelfHandledCampaign';
-import PushScreen from './app//push/PushNotificationScreen';
 import TrackEventScreen from './app/trackEvents/TrackEventScreen';
 import UserAttributeScreen from './app/userAttributes/UserAttributeScreen';
 import PushNotificationScreen from './app/push/PushNotificationScreen';
+import InboxListScreen from './app/InboxListScreen';
 const AppNavigator = createStackNavigator(
   {
     HomeScreen: {
@@ -15,24 +15,27 @@ const AppNavigator = createStackNavigator(
     },
     InAppScreen: {
       screen: InAppScreen,
-      navigationOptions: {headerTitle: 'InApp Screen'},
+      navigationOptions: {headerTitle: 'InApp'},
     },
     SelfHandledCampaign: {
       screen: SelfHandledCampaign,
-      navigationOptions: {headerTitle: 'SelfHandled Campaign Screen'},
+      navigationOptions: {headerTitle: 'SelfHandled Campaigns'},
     },
-    PushScreen: {screen: PushScreen},
+    InboxListScreen: {
+      screen: InboxListScreen,
+      navigationOptions: {headerTitle: 'Inbox'},
+    },
     TrackEventScreen: {
       screen: TrackEventScreen,
-      navigationOptions: {headerTitle: 'Track Event Screen'},
+      navigationOptions: {headerTitle: 'Track Events'},
     },
     UserAttributeScreen: {
       screen: UserAttributeScreen,
-      navigationOptions: {headerTitle: 'User Attribute Screen'},
+      navigationOptions: {headerTitle: 'User Attributes'},
     },
     PushNotificationScreen: {
       screen: PushNotificationScreen,
-      navigationOptions: {headerTitle: 'Push NotificationScreen Screen'},
+      navigationOptions: {headerTitle: 'Push Notification'},
     },
   },
   {

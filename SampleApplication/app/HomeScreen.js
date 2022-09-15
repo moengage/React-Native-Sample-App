@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Text,
-  View,
-  StatusBar,
-  FlatList,
-  TouchableOpacity,
-  Platform,
-} from 'react-native';
+import {Text, View, StatusBar, FlatList, TouchableOpacity} from 'react-native';
 import {
   DISABLE_AD_ID_TRACKING,
   DISABLE_ANDROID_ID_TRACKING,
@@ -14,7 +7,6 @@ import {
   ENABLE_AD_ID_TRACKING,
   ENABLE_ANDROID_ID_TRACKING,
   ENABLE_SDK,
-  GEOFENCE_FOR_IOS_MESSAGE,
   GEOFENCE_MONITOR,
   IN_APP,
   LOGOUT,
@@ -104,7 +96,7 @@ const HomeScreen = ({navigation}) => {
         navigation.navigate('PushNotificationScreen');
         break;
       case MOE_INBOX:
-        console.log('inbox');
+        navigation.navigate('InboxListScreen');
         break;
       case GEOFENCE_MONITOR:
         ReactMoEGeofence.startGeofenceMonitoring(APP_ID);

@@ -5,6 +5,7 @@
 #import <React/RCTRootView.h>
 
 #import <React/RCTAppSetupUtils.h>
+#import <ReactNativeMoEngage/MoEngageInitializer.h>
 
 #if RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
@@ -34,9 +35,10 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   RCTAppSetupPrepareApp(application);
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
+  [[MoEngageInitializer sharedInstance] initializeDefaultInstance:launchOptions];
 
 #if RCT_NEW_ARCH_ENABLED
-  _contextContainer = std::make_shared<facebook::react::ContextContainer const>();
+  _contextContainer = std::make_shared<facebook:react::ContextContainer const>();
   _reactNativeConfig = std::make_shared<facebook::react::EmptyReactNativeConfig const>();
   _contextContainer->insert("ReactNativeConfig", _reactNativeConfig);
   _bridgeAdapter = [[RCTSurfacePresenterBridgeAdapter alloc] initWithBridge:bridge contextContainer:_contextContainer];
@@ -56,7 +58,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
-  [self.window makeKeyAndVisible];
+  [self.window makeKeyAndVisible]; 
   return YES;
 }
 

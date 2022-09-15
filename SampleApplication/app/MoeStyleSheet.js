@@ -68,5 +68,49 @@ const MOEStyles = StyleSheet.create({
     alignSelf: 'center',
     width: '90%',
   },
+  inboxMainContainer: {
+    paddingTop: 16,
+    flex: 1,
+    backgroundColor: '#CEECF5',
+  },
+  rowItemMainContainer: {
+    marginStart: 16,
+    marginEnd: 16,
+    minHeight: 200,
+    backgroundColor: '#f0ffff',
+    padding: 10,
+  },
+  rowItemText: {
+    padding: 10,
+    fontSize: 15,
+    color: 'black',
+  },
+
+  text: {
+    alignItems: 'center',
+    textAlign: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+    backgroundColor: '#088A85',
+    color: 'white',
+  },
+
+  buttonView: {
+    padding: 10,
+    flex: 1,
+  },
+  container: {
+    flex: 1,
+  },
+  separator: {
+    height: 1,
+    width: '100%',
+    backgroundColor: '#CEECF5',
+    padding: 8,
+  },
+  buttonParent: {
+    flexDirection: 'row',
+  },
 });
 export default MOEStyles;

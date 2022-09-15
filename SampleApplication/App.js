@@ -9,14 +9,6 @@ const App = () => {
   });
 
   ReactMoE.setEventListener('pushClicked', notificationPayload => {
-    Alert.alert('Alert Title', 'Notification Clicked', [
-      {
-        text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
-        style: 'cancel',
-      },
-      {text: 'OK', onPress: () => console.log('OK Pressed')},
-    ]);
     console.log('pushClicked', notificationPayload);
   });
 
