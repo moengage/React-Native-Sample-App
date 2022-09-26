@@ -17,6 +17,9 @@ import com.moengage.react.MoEReactPackage;
 import com.moengage.react.inbox.MoengageInboxPackage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import com.moengage.pushbase.MoEPushHelper;
+import androidx.lifecycle.ProcessLifecycleOwner;
+
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -58,8 +61,9 @@ public class MainApplication extends Application implements ReactApplication {
             .configureLogs(new LogConfig(LogLevel.VERBOSE))
             .configureNotificationMetaData(new NotificationConfig(R.drawable.small_icon,
                 R.drawable.large_icon));
-    MoEInitializer.INSTANCE.initialize(getApplicationContext(), moEngage);
-  }
+                MoEInitializer.INSTANCE.initializeDefaultInstance(getApplicationContext(), moEngage);
+                ProcessLifecycleOwner.get().getLifecycle().addObserver(new ApplicationLifecycleObserver(this.getApplicationContext()));
+                MoEPushHelper.getInstance().setUpNotificationChannels(this.getApplicationContext());  }
 
   /**
    * Loads Flipper in React Native templates. Call this in the onCreate method with something like
