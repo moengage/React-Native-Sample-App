@@ -57,7 +57,7 @@ public class MainApplication extends Application implements ReactApplication {
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
     MoEngage.Builder moEngage =
-        new MoEngage.Builder(this, "F7TLMPJHG86ULAI9XJFGLLSE")
+        new MoEngage.Builder(this, "DAO6UGZ73D9RTK8B5W96TPYN")
             .configureLogs(new LogConfig(LogLevel.VERBOSE))
             .configureNotificationMetaData(new NotificationConfig(R.drawable.small_icon,
                 R.drawable.large_icon));

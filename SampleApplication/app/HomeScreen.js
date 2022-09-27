@@ -22,7 +22,7 @@ import ReactMoE from 'react-native-moengage';
 import ReactMoEGeofence from 'react-native-moengage-geofence';
 
 const HomeScreen = ({navigation}) => {
-  const APP_ID = 'F7TLMPJHG86ULAI9XJFGLLSE';
+  const APP_ID = 'DAO6UGZ73D9RTK8B5W96TPYN';
   ReactMoE.initialize(APP_ID);
 
   const MOE_FEATURES = [
