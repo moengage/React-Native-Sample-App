@@ -11,6 +11,9 @@ export const DISABLE_ANDROID_ID_TRACKING = 'Disable Android ID Tracking';
 export const ENABLE_AD_ID_TRACKING = 'Enable Ad ID Tracking';
 export const DISABLE_AD_ID_TRACKING = 'Disable Ad ID Tracking';
 export const LOGOUT = 'Logout';
+export const OPT_IN_DATA = 'Opt in data';
+export const OPT_OUT_DATA = 'Opt out data';
+
 //PUSH
 export const IOS_PUSH_REGISTER = 'Register For Push (iOS)';
 export const ANDROID_PUSH_TOKEN = 'Pass FCM Push Token (android)';

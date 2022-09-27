@@ -11,6 +11,8 @@ import {
   IN_APP,
   LOGOUT,
   MOE_INBOX,
+  OPT_IN_DATA,
+  OPT_OUT_DATA,
   PUSH_NOTIFICATION,
   TRACK_EVENTS,
   USER_ATTRIBUTES,
@@ -73,6 +75,14 @@ const HomeScreen = ({navigation}) => {
       title: DISABLE_ANDROID_ID_TRACKING,
     },
     {
+      id: OPT_IN_DATA,
+      title: OPT_IN_DATA,
+    },
+    {
+      id: OPT_OUT_DATA,
+      title: OPT_OUT_DATA,
+    },
+    {
       id: LOGOUT,
       title: LOGOUT,
     },
@@ -118,6 +128,12 @@ const HomeScreen = ({navigation}) => {
         break;
       case DISABLE_ANDROID_ID_TRACKING:
         ReactMoE.disableAndroidIdTracking();
+        break;
+      case OPT_IN_DATA:
+        ReactMoE.optOutDataTracking(false);
+        break;
+      case OPT_OUT_DATA:
+        ReactMoE.optOutDataTracking(true);
         break;
       case LOGOUT:
         ReactMoE.logout();
