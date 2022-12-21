@@ -1,5 +1,3 @@
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
 import HomeScreen from './app/HomeScreen';
 import InAppScreen from './app//inapp/InAppScreen';
 import SelfHandledCampaign from './app//inapp/SelfHandledCampaign';
@@ -7,48 +5,24 @@ import TrackEventScreen from './app/trackEvents/TrackEventScreen';
 import UserAttributeScreen from './app/userAttributes/UserAttributeScreen';
 import PushNotificationScreen from './app/push/PushNotificationScreen';
 import InboxListScreen from './app/InboxListScreen';
-const AppNavigator = createStackNavigator(
-  {
-    HomeScreen: {
-      screen: HomeScreen,
-      navigationOptions: {headerTitle: 'Home Screen'},
-    },
-    InAppScreen: {
-      screen: InAppScreen,
-      navigationOptions: {headerTitle: 'InApp'},
-    },
-    SelfHandledCampaign: {
-      screen: SelfHandledCampaign,
-      navigationOptions: {headerTitle: 'SelfHandled Campaigns'},
-    },
-    InboxListScreen: {
-      screen: InboxListScreen,
-      navigationOptions: {headerTitle: 'Inbox'},
-    },
-    TrackEventScreen: {
-      screen: TrackEventScreen,
-      navigationOptions: {headerTitle: 'Track Events'},
-    },
-    UserAttributeScreen: {
-      screen: UserAttributeScreen,
-      navigationOptions: {headerTitle: 'User Attributes'},
-    },
-    PushNotificationScreen: {
-      screen: PushNotificationScreen,
-      navigationOptions: {headerTitle: 'Push Notification'},
-    },
-  },
-  {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#088A85',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },
-  },
-);
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
 
-export default createAppContainer(AppNavigator);
+const Stack = createNativeStackNavigator()
+
+export default AppNavigator = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator headerStyle={{backgroundColor: '#088A85'}} headerTintColor="fff" headerTitleStyle={{fontWeight: 'bold'}} initialRouteName="HomeScreen">
+        <Stack.Screen name="HomeScreen" component={HomeScreen} headerTitle="Home Screen"/>
+        <Stack.Screen name="InAppScreen" component={InAppScreen} headerTitle="InApp"/>
+        <Stack.Screen name="SelfHandledCampaign" component={SelfHandledCampaign} headerTitle="SelfHandled Campaigns"/>
+        <Stack.Screen name="InboxListScreen" component={InboxListScreen} headerTitle="Inbox"/>
+        <Stack.Screen name="TrackEventScreen" component={TrackEventScreen} headerTitle="Track Events"/>
+        <Stack.Screen name="UserAttributeScreen" component={UserAttributeScreen} headerTitle="User Attributes"/>
+        <Stack.Screen name="PushNotificationScreen" component={PushNotificationScreen} headerTitle="Push Notification"/>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
