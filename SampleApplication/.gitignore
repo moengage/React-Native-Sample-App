@@ -27,6 +27,7 @@ build/
 .idea
 .gradle
 local.properties
+app/google-services.json
 *.iml
 
 # node.js
