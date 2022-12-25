@@ -13,14 +13,14 @@ const Stack = createNativeStackNavigator()
 export default AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator headerStyle={{backgroundColor: '#088A85'}} headerTintColor="fff" headerTitleStyle={{fontWeight: 'bold'}} initialRouteName="HomeScreen">
-        <Stack.Screen name="HomeScreen" component={HomeScreen} headerTitle="Home Screen"/>
-        <Stack.Screen name="InAppScreen" component={InAppScreen} headerTitle="InApp"/>
-        <Stack.Screen name="SelfHandledCampaign" component={SelfHandledCampaign} headerTitle="SelfHandled Campaigns"/>
-        <Stack.Screen name="InboxListScreen" component={InboxListScreen} headerTitle="Inbox"/>
-        <Stack.Screen name="TrackEventScreen" component={TrackEventScreen} headerTitle="Track Events"/>
-        <Stack.Screen name="UserAttributeScreen" component={UserAttributeScreen} headerTitle="User Attributes"/>
-        <Stack.Screen name="PushNotificationScreen" component={PushNotificationScreen} headerTitle="Push Notification"/>
+      <Stack.Navigator initialRouteName="HomeScreen" screenOptions={{headerStyle : {backgroundColor: '#088A85'}, headerTintColor: "#fff", headerTitleStyle:{fontWeight: 'bold'}}}>
+        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ title: 'Home Screen' }}/>
+        <Stack.Screen name="InAppScreen" component={InAppScreen} options={{ title: 'InApp' }}/>
+        <Stack.Screen name="SelfHandledCampaign" component={SelfHandledCampaign} options={{ title: 'SelfHandled Campaigns' }}/>
+        <Stack.Screen name="InboxListScreen" component={InboxListScreen} options={{ title: 'Inbox' }}/>
+        <Stack.Screen name="TrackEventScreen" component={TrackEventScreen} options={{ title: 'Track Events' }}/>
+        <Stack.Screen name="UserAttributeScreen" component={UserAttributeScreen} options={{ title: 'User Attributes' }}/>
+        <Stack.Screen name="PushNotificationScreen" component={PushNotificationScreen} options={{ title: 'Push Notification' }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
