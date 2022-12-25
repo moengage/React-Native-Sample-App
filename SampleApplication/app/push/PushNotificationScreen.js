@@ -36,7 +36,7 @@ const PushNotificationScreen = () => {
                 gcm_activityName: 'com.moe.pushlibrary.activities.MoEActivity',
                 gcm_alert: 'pushtoinbox',
                 gcm_campaign_id: new Date().getTime(),
-                moe_app_id: 'DAO6UGZ73D9RTK8B5W96TPYN',
+                moe_app_id: 'Enter Your AppId',
               })
             }>
             <Text style={MOEStyles.title}>{ANDROID_PUSH_PAYLOAD}</Text>

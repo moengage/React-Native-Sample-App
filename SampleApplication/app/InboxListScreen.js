@@ -49,7 +49,7 @@ export default class InboxListScreen extends PureComponent {
   }
 
   async componentDidMount() {
-    MoEReactInbox.initialize('DAO6UGZ73D9RTK8B5W96TPYN');
+    MoEReactInbox.initialize('Enter Your App Id');
     var message = await MoEReactInbox.fetchAllMessages();
     this.setState({
       isLoading: false,
