@@ -1,7 +1,8 @@
-import React from 'react';
-import {View, Alert} from 'react-native';
+import React, { useEffect } from 'react';
+import { View } from 'react-native';
 import AppNavigator from './AppNavigator';
 import ReactMoE from 'react-native-moengage';
+import * as RootNavigation from './RootNavigation';
 
 const App = () => {
   ReactMoE.setEventListener('pushTokenGenerated', payload => {
@@ -10,6 +11,9 @@ const App = () => {
 
   ReactMoE.setEventListener('pushClicked', notificationPayload => {
     console.log('pushClicked', notificationPayload);
+    if (notificationPayload.data.payload.Navigate) {
+      RootNavigation.navigate(notificationPayload.data.payload.Navigate, {});
+    }
   });
 
   ReactMoE.setEventListener('inAppCampaignShown', inAppInfo =>
@@ -27,6 +31,12 @@ const App = () => {
   ReactMoE.setEventListener('inAppCampaignCustomAction', selfHandledInAppInfo =>
     console.log('inAppCampaignCustomAction', selfHandledInAppInfo),
   );
+
+  useEffect(() => {
+    const APP_ID = 'Enter Your App Id';
+    ReactMoE.initialize(APP_ID);
+  }, []);
+  
   return (
     <View style={{flex: 1}}>
       <AppNavigator />

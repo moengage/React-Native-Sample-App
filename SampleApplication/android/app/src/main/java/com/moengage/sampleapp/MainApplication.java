@@ -59,7 +59,7 @@ public class MainApplication extends Application implements ReactApplication {
             .configureLogs(new LogConfig(LogLevel.VERBOSE))
             .configureNotificationMetaData(new NotificationConfig(R.drawable.small_icon,
                 R.drawable.large_icon));
-                MoEInitializer.INSTANCE.initializeDefaultInstance(getApplicationContext(), moEngage);
+                MoEInitializer.INSTANCE.initializeDefaultInstance(getApplicationContext(), moEngage, true);
                 ProcessLifecycleOwner.get().getLifecycle().addObserver(new ApplicationLifecycleObserver(this.getApplicationContext()));
                 MoEPushHelper.getInstance().setUpNotificationChannels(this.getApplicationContext());  }
 

@@ -59,3 +59,7 @@ export const GEOFENCE_FOR_IOS_MESSAGE =
 export const CANCEL = 'Cancel';
 export const OK = 'Ok';
 export const PLAIN_TEXT = 'plain-text';
+
+export const ANDROID_13_OPTIN_PERMISSION_COUNT = 'Increment Push Permission Count(Android)';
+export const DRM_ID_ENABLE = "Enable Device Id Tracking(Android)";
+export const DRM_ID_DISABLE = "Disable Device Id Tracking(Android)";

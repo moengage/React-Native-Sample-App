@@ -7,12 +7,13 @@ import PushNotificationScreen from './app/push/PushNotificationScreen';
 import InboxListScreen from './app/InboxListScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { navigationRef } from './RootNavigation';
 
 const Stack = createNativeStackNavigator()
 
 export default AppNavigator = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator initialRouteName="HomeScreen" screenOptions={{headerStyle : {backgroundColor: '#088A85'}, headerTintColor: "#fff", headerTitleStyle:{fontWeight: 'bold'}}}>
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ title: 'Home Screen' }}/>
         <Stack.Screen name="InAppScreen" component={InAppScreen} options={{ title: 'InApp' }}/>

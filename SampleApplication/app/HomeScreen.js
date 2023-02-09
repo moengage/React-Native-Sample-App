@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useCallback} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
+import {BackHandler, Alert} from 'react-native';
 import {Text, View, StatusBar, FlatList, TouchableOpacity} from 'react-native';
 import {
   DISABLE_AD_ID_TRACKING,
@@ -16,14 +18,45 @@ import {
   PUSH_NOTIFICATION,
   TRACK_EVENTS,
   USER_ATTRIBUTES,
+  ANDROID_13_OPTIN_PERMISSION_COUNT,
+  DRM_ID_ENABLE,
+  DRM_ID_DISABLE
 } from './Constants';
 import MOEStyles from './MoeStyleSheet';
 import ReactMoE from 'react-native-moengage';
 import ReactMoEGeofence from 'react-native-moengage-geofence';
 
+const onAppExit = () => {
+  Alert.alert(
+    'Exit',
+    'Exit the app',
+    [
+      {
+        text: 'Cancel',
+      },
+      {
+        text: 'Ok',
+        onPress: () => {
+          BackHandler.exitApp();
+        },
+      },
+    ],
+    { cancelable: false },
+  );
+};
+
 const HomeScreen = ({navigation}) => {
-  const APP_ID = 'Enter Your App Id';
-  ReactMoE.initialize(APP_ID);
+  useFocusEffect(
+    useCallback(() => {
+      const onBackPress = () => {
+        onAppExit();
+        return true;
+      };
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+      return () =>
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+    }, [onAppExit]),
+  );
 
   const MOE_FEATURES = [
     {
@@ -86,6 +119,18 @@ const HomeScreen = ({navigation}) => {
       id: LOGOUT,
       title: LOGOUT,
     },
+    {
+      id: ANDROID_13_OPTIN_PERMISSION_COUNT,
+      title: ANDROID_13_OPTIN_PERMISSION_COUNT,
+    },
+    {
+      id: DRM_ID_ENABLE,
+      title: DRM_ID_ENABLE,
+    },
+    {
+      id: DRM_ID_DISABLE,
+      title: DRM_ID_DISABLE,
+    }
   ];
 
   const handleOnPress = id => {
@@ -137,6 +182,15 @@ const HomeScreen = ({navigation}) => {
         break;
       case LOGOUT:
         ReactMoE.logout();
+        break;
+      case ANDROID_13_OPTIN_PERMISSION_COUNT:
+        ReactMoE.updatePushPermissionRequestCountAndroid(1);
+        break;
+      case DRM_ID_ENABLE:
+        ReactMoE.enableDeviceIdTracking();
+        break;
+      case DRM_ID_DISABLE:
+        ReactMoE.disableDeviceIdTracking();
         break;
     }
   };
