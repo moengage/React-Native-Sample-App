@@ -14,3 +14,15 @@ if (settings.hasProperty("newArchEnabled") && settings.newArchEnabled == "true")
     project(":ReactAndroid:hermes-engine").projectDir = file('../node_modules/react-native/ReactAndroid/hermes-engine')
 
 }
+
+enableFeaturePreview("VERSION_CATALOGS")
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+    versionCatalogs {
+        create("moengage") {
+            from("com.moengage:android-dependency-catalog:3.1.1")
+        }
+    }
+}

@@ -1,19 +1,19 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 
-import {View, Text, FlatList, TouchableOpacity, Alert} from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Alert } from 'react-native';
 import MOEStyles from './MoeStyleSheet';
 import MoEReactInbox from 'react-native-moengage-inbox';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 
 export default class InboxListScreen extends PureComponent {
-  static navigationOptions = ({navigation}) => {
-    const {params = {}} = navigation.state;
+  static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
     return {
       headerTitle: 'Inbox',
       title: 'Inbox Title',
       headerRight: () => (
         <TouchableOpacity onPress={params.getUnClickedCount}>
-          <View style={{flex: 1, paddingRight: 10, justifyContent: 'center'}}>
+          <View style={{ flex: 1, paddingRight: 10, justifyContent: 'center' }}>
             <Text>
               {' '}
               <AntIcon name="inbox" size={30} color="white" />
@@ -31,6 +31,7 @@ export default class InboxListScreen extends PureComponent {
   };
 
   getUnClickedCount = async () => {
+    // Get un-clicked message count in the inbox
     var count = await MoEReactInbox.getUnClickedCount();
     Alert.alert('Unread Message Count', count.toString(), [
       {
@@ -49,7 +50,10 @@ export default class InboxListScreen extends PureComponent {
   }
 
   async componentDidMount() {
-    MoEReactInbox.initialize('Enter Your App Id');
+    // Initialize the Inbox Plugin, before using any MoEngage Inbox API
+    MoEReactInbox.initialize('YOUR_APP_ID');
+
+    // Fetch all the available messages
     var message = await MoEReactInbox.fetchAllMessages();
     this.setState({
       isLoading: false,
@@ -58,11 +62,15 @@ export default class InboxListScreen extends PureComponent {
   }
 
   trackClick = message => {
+    // Call this API whenever any message is clicked, with the clicked message object
     MoEReactInbox.trackMessageClicked(message);
   };
 
   deleteMessage = async item => {
+    // Delete any message
     MoEReactInbox.deleteMessage(item);
+
+    // You can remove the deleted message from the list or you can fetch the complete message list again
     var message = await MoEReactInbox.fetchAllMessages();
     this.setState({
       isLoading: false,
@@ -73,7 +81,7 @@ export default class InboxListScreen extends PureComponent {
   flatListItemSeparator = () => {
     return <View style={MOEStyles.separator} />;
   };
-  _renderRowItem = ({item}) => {
+  _renderRowItem = ({ item }) => {
     return (
       <View style={MOEStyles.rowItemMainContainer}>
         <Text style={MOEStyles.rowItemText}>
@@ -105,7 +113,7 @@ export default class InboxListScreen extends PureComponent {
   };
 
   render() {
-    let {dataSource} = this.state;
+    let { dataSource } = this.state;
     return (
       <View style={MOEStyles.inboxMainContainer}>
         <FlatList

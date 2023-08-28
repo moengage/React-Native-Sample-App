@@ -297,18 +297,22 @@ dependencies {
     implementation("androidx.core:core:1.9.0")
     implementation("androidx.appcompat:appcompat:1.5.1")
     implementation("androidx.lifecycle:lifecycle-process:2.5.1")
-    implementation("com.moengage:moe-android-sdk:12.6.00")
     implementation project(":react-native-moengage")
-    implementation project(":react-native-moengage-inbox") 
-    implementation("com.moengage:inbox-core:2.2.0")
-    implementation('com.google.firebase:firebase-messaging:23.1.1')
-    implementation("com.moengage:inapp:6.5.0")
+    implementation project(":react-native-moengage-inbox")
+    implementation('com.google.firebase:firebase-messaging:23.2.1')
     implementation platform('com.google.firebase:firebase-bom:30.3.2')
     implementation 'com.google.firebase:firebase-analytics'
     implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
-    implementation("com.moengage:rich-notification:4.2.0")
-    implementation("com.moengage:push-amp-plus:6.2.1")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
+
+    // MoEngage Dependencies
+    implementation(moengage.core) // Mandatory
+    implementation(moengage.pushAmpPlus) // Optional, If you are using PushAmpPlus feature
+    implementation(moengage.richNotification) // Optional, Required for Push Templates
+    implementation(moengage.inapp) // Optional, Required for InApps
+    implementation(moengage.inboxCore) // Optional, Mandatory only if you are adding react-native-moengage-inbox
+    implementation(moengage.geofence) // Optional, Mandatory only if you are adding react-native-moengage-geofence
+    implementation(moengage.cardsCore) // Optional, Mandatory only if you are adding react-native-moengage-cards
 }
 
 if (isNewArchitectureEnabled()) {
