@@ -5,6 +5,8 @@ import TrackEventScreen from './app/trackEvents/TrackEventScreen';
 import UserAttributeScreen from './app/userAttributes/UserAttributeScreen';
 import PushNotificationScreen from './app/push/PushNotificationScreen';
 import InboxListScreen from './app/InboxListScreen';
+import CardsScreen from './app/cards/component/CardsScreen';
+import SelfHandledCardUI from './app/cards/component/SelfHandledCardUI';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { navigationRef } from './RootNavigation';
@@ -22,6 +24,8 @@ export default AppNavigator = () => {
         <Stack.Screen name="TrackEventScreen" component={TrackEventScreen} options={{ title: 'Track Events' }} />
         <Stack.Screen name="UserAttributeScreen" component={UserAttributeScreen} options={{ title: 'User Attributes' }} />
         <Stack.Screen name="PushNotificationScreen" component={PushNotificationScreen} options={{ title: 'Push Notification' }} />
+        <Stack.Screen name="SelfHandledCards" component={CardsScreen} options={{ title: 'Self Handled Cards' }} />
+        <Stack.Screen name="SelfHandledCardUI" component={SelfHandledCardUI} options={{ title: 'Cards UI' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

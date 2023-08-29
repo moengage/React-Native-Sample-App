@@ -20,7 +20,8 @@ import {
   USER_ATTRIBUTES,
   ANDROID_13_OPTIN_PERMISSION_COUNT,
   DRM_ID_ENABLE,
-  DRM_ID_DISABLE
+  DRM_ID_DISABLE,
+  SELF_HANDLED_CARDS
 } from './Constants';
 import MOEStyles from './MoeStyleSheet';
 import ReactMoE from 'react-native-moengage';
@@ -130,6 +131,10 @@ const HomeScreen = ({ navigation }) => {
     {
       id: DRM_ID_DISABLE,
       title: DRM_ID_DISABLE,
+    },
+    {
+      id: SELF_HANDLED_CARDS,
+      title: SELF_HANDLED_CARDS
     }
   ];
 
@@ -222,6 +227,10 @@ const HomeScreen = ({ navigation }) => {
       case DRM_ID_DISABLE:
         // API to disable Device Id tracking. This API has no use in iOS Platform
         ReactMoE.disableDeviceIdTracking();
+        break;
+
+      case SELF_HANDLED_CARDS:
+        navigation.navigate('SelfHandledCards');
         break;
     }
   };

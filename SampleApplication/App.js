@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
 import AppNavigator from './AppNavigator';
-import ReactMoE from 'react-native-moengage';
+import ReactMoE, {
+  MoEInitConfig,
+  MoEPushConfig,
+  MoEngageLogConfig,
+  MoEngageLogLevel
+} from 'react-native-moengage';
 import * as RootNavigation from './RootNavigation';
 
 const App = () => {
@@ -71,8 +76,14 @@ const App = () => {
     // Get your App Id from the MoEngage Dashboard
     const APP_ID = 'YOUR_APP_ID';
 
+    // Optionally pass configuration for the React-Native Plugins
+    const moEInitConfig = new MoEInitConfig(
+      MoEPushConfig.defaultConfig(),
+      new MoEngageLogConfig(MoEngageLogLevel.VERBOSE, true)
+    );
+
     // Initialize the MoEngage Core SDK whenever the component is mounted properly.
-    ReactMoE.initialize(APP_ID);
+    ReactMoE.initialize(APP_ID, moEInitConfig);
   }, []);
 
   return (

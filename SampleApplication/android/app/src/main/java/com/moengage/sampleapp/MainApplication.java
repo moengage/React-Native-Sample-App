@@ -30,7 +30,10 @@ public class MainApplication extends Application implements ReactApplication {
 
         @Override
         protected List<ReactPackage> getPackages() {
-          return new PackageList(this).getPackages();
+          @SuppressWarnings("UnnecessaryLocalVariable")
+          List<ReactPackage> packages = new PackageList(this).getPackages();
+          // Packages that cannot be autolinked yet can be added manually here, for example:
+          return packages;
         }
 
         @Override
@@ -44,47 +47,45 @@ public class MainApplication extends Application implements ReactApplication {
     return mReactNativeHost;
   }
 
-  @Override
-  public void onCreate() {
-    super.onCreate();
-    SoLoader.init(this, /* native exopackage */ false);
-    initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+	@Override
+	public void onCreate() {
+		super.onCreate();
+		SoLoader.init(this, /* native exopackage */ false);
+		initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
 
-    // Configure MoEngage SDK
-    MoEngage.Builder moEngage =
-        new MoEngage.Builder(this, "YOUR_APP_ID", DataCenter.DATA_CENTER_1 /*[YOUR_DATA_CENTER]*/)
-            .configureLogs(new LogConfig(LogLevel.VERBOSE))
-            .configureNotificationMetaData(
-                new NotificationConfig(
-                    R.drawable.small_icon, /* Small Icon */
-                    R.drawable.large_icon,  /* Large Icon */
-                    R.color.notification_color,  /* Notification Color */
-                    true,  /* True, to show multiple notification in notification drawer */
-                    true, /* True, to synthesize back-stack for the notification's click action */
-                    true /* True, to show notification large icon on Lollipop and above devices */
-                )
-            );
+		// Configure MoEngage SDK
+		MoEngage.Builder moEngage =
+			new MoEngage.Builder(this, "YOUR_APP_ID", DataCenter.DATA_CENTER_1 /* [YOUR_DATA_CENTER] */)
+				.configureLogs(new LogConfig(LogLevel.VERBOSE))
+				.configureNotificationMetaData(
+					new NotificationConfig(
+						R.drawable.small_icon, /* Small Icon */
+						R.drawable.large_icon, /* Large Icon */
+						R.color.notification_color, /* Notification Color */
+						true, /* True, to show multiple notification in notification drawer */
+						true, /* True, to synthesize back-stack for the notification's click action */
+						true /* True, to show notification large icon on Lollipop and above devices */
+					));
 
-    // Initialize MoEngage SDK
-    MoEInitializer.INSTANCE.initializeDefaultInstance(
-        getApplicationContext(),
-        moEngage,
-        false
-    );
+		// Initialize MoEngage SDK
+		MoEInitializer.INSTANCE.initializeDefaultInstance(
+			getApplicationContext(),
+			moEngage,
+			false);
 
-    ProcessLifecycleOwner.get()
-        .getLifecycle()
-        .addObserver(new ApplicationLifecycleObserver(this.getApplicationContext()));
+		ProcessLifecycleOwner.get()
+			.getLifecycle()
+			.addObserver(new ApplicationLifecycleObserver(this.getApplicationContext()));
 
-    MoEPushHelper.getInstance().setUpNotificationChannels(this.getApplicationContext());
-  }
+		MoEPushHelper.getInstance().setUpNotificationChannels(this.getApplicationContext());
+	}
 
   /**
    * Loads Flipper in React Native templates. Call this in the onCreate method with something like
    * initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
    *
-   * @param context instance of [Context]
-   * @param reactInstanceManager instance of [ReactInstanceManager]
+   * @param context
+   * @param reactInstanceManager
    */
   private static void initializeFlipper(
       Context context, ReactInstanceManager reactInstanceManager) {
