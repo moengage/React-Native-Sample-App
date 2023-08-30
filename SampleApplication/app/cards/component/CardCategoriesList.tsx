@@ -6,6 +6,9 @@ type CardCategoriesProps = {
     onClick: (clickedCategory) => void
 }
 
+/**
+ * Component to display all the available categories
+ */
 export const CardsCategoriesList = (props: CardCategoriesProps) => {
 
     const [activeTab, updateActiveTab] = useState<number>(0);

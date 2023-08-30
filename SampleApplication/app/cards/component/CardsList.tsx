@@ -16,7 +16,7 @@ export const CardsList = (props: CardsProps) => {
             <FlatList
                 data={props.cards}
                 renderItem={({ item }) => {
-                    // Illustration Cards UI using same ui as basic card with type displayed on cards
+                    // All cards template is using same UI, you can create different UI for different templates
                     return (
                         <BasicCard card={item}
                             onCardShown={props.onCardShown}

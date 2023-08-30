@@ -9,11 +9,15 @@ import { Card, SyncCompleteData } from "react-native-moengage-cards";
 
 const cardsHelper = new CardsHelper();
 
+/**
+ * Cards UI Component
+ */
 const SelfHandledCardUI = () => {
     const [cardCategories, setCardCategories] = useState<Array<string>>([])
     const [cards, updateCardData] = useState<Array<Card>>([]);
 
     function fetchAndUpdatedCards(cardCategory) {
+        // Fetch cards for a particular category
         cardsHelper.getCardForCategory(cardCategory).then((cardsData) => {
             if (cardsData !== undefined) {
                 updateCardData(cardsData.cards);
@@ -22,8 +26,11 @@ const SelfHandledCardUI = () => {
     }
 
     function fetchAndUpdateCardsInfo() {
+        // Get all the cards info
         cardsHelper.getCardsInfo().then((cardsInfo) => {
             const cardCategories = new Array<string>;
+
+            // Add the "All" category in available categories if shouldShowAllTab is true
             if (cardsInfo.shouldShowAllTab) cardCategories.push("All");
             cardsInfo.categories.forEach((category) => cardCategories.push(category));
             setCardCategories(cardCategories);
@@ -32,17 +39,26 @@ const SelfHandledCardUI = () => {
     }
 
     useEffect(() => {
+        // Get all the available cards data
         fetchAndUpdateCardsInfo();
+
+        // Call cards section loaded method
         cardsHelper.onCardSectionLoaded((data: SyncCompleteData | null) => {
             if (data !== null && data.hasUpdates) {
                 MoEngageLogger.debug("Card Section Data Update Available ");
+
+                // Update available, fetch new cards and update the UI
                 fetchAndUpdateCardsInfo();
             }
         });
 
+        // Call after cards component is un-mounted
         return () => cardsHelper.onCardSectionUnLoaded();
     }, []);
 
+    /**
+     * Build your component based on the available cards data
+     */
     return (
         <View style={{ flex: 1 }} >
             {/* Category Tab List UI*/}

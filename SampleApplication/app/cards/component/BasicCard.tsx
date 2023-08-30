@@ -47,6 +47,9 @@ function getCtaWidgetIfAvailable(widgets: Array<Widget>): Widget | null {
     return ctaWidget;
 }
 
+/**
+ * Delete a card
+ */
 const onLongPress = (card: Card, onDelete: (card: Card) => void) => {
     Alert.alert(
         'Delete Card',
@@ -71,6 +74,9 @@ function getUpdatedTime(timeInMillis: number): string {
     return dateObject.toLocaleDateString() + " " + dateObject.toLocaleTimeString();
 }
 
+/**
+ * Cards UI Component
+ */
 export const BasicCard = (props: CardProps) => {
     const metaData = props.card.metaData;
     const container = props.card.template.containers[0];
@@ -83,6 +89,9 @@ export const BasicCard = (props: CardProps) => {
         props.onCardShown(props.card);
     }, []);
 
+    /**
+     * Logic to build the Cards UI
+     */
     return (
         <TouchableOpacity
             activeOpacity={0.9}
@@ -99,7 +108,10 @@ export const BasicCard = (props: CardProps) => {
                     props.onClick(props.card, imageWidget?.id ?? -1);
                 }}>
                 <View>
+                    {/* Load ImageWidget image is available */}
                     {imageWidget != null && <Image style={styles.imageContainer} source={{ uri: imageWidget.content }} />}
+
+                    {/* Check if cards is pinned cards or not */}
                     {metaData.isPinned && <Image style={styles.pinnedImage} source={require('../../../assets/moe_card_pin.png')} />}
                 </View>
             </TouchableOpacity>
@@ -112,6 +124,8 @@ export const BasicCard = (props: CardProps) => {
                                 props.onClick(props.card, headerWidget?.id ?? -1);
                             }}
                             onLongPress={() => onLongPress(props.card, props.onDelete)}>
+
+                            {/* Render Cards Header */}
                             <CustomHtmlRender content={headerWidget.content} />
                         </TouchableOpacity>
                     )}
@@ -123,6 +137,8 @@ export const BasicCard = (props: CardProps) => {
                                 props.onClick(props.card, messageWidget?.id ?? -1);
                             }}
                             onLongPress={() => onLongPress(props.card, props.onDelete)}>
+
+                            {/* Render Cards Message */}
                             <CustomHtmlRender content={messageWidget.content} />
                         </TouchableOpacity>
                     )}
@@ -139,10 +155,14 @@ export const BasicCard = (props: CardProps) => {
                             onPress={() => {
                                 MoEngageLogger.debug("Cta Clicked", ctaWidget);
                                 props.onClick(props.card, ctaWidget?.id ?? -1);
+
+                                {/* Add your redirection logic */ }
                             }}
                             onLongPress={() => onLongPress(props.card, props.onDelete)}
                             activeOpacity={0.9}
                             style={styles.ctaSection}>
+
+                            {/* Render CTA */}
                             <CustomHtmlRender content={ctaWidget.content} />
                         </TouchableOpacity>
                     )}

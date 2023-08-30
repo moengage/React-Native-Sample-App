@@ -4,6 +4,9 @@ import CardsHelper from "../CardsHelper";
 
 const cardHelper = new CardsHelper();
 
+/**
+ * Different Button to test the cards methods
+ */
 const CardsScreenClickableList = [
     {
         id: 0,
@@ -46,6 +49,7 @@ const CardsScreenClickableList = [
 const CardsScreen = (props) => {
 
     useEffect(() => {
+        // Initialize the cards
         cardHelper.initialise();
     }, []);
 

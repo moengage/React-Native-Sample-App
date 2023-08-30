@@ -22,6 +22,9 @@ const fontElementModel = HTMLElementModel.fromCustomModel({
 
 const customHTMLElementModels = { font: fontElementModel };
 
+/**
+ * Custom Html Content Renderer
+ */
 export const CustomHtmlRender = (props) => {
     const { width } = useWindowDimensions();
 
