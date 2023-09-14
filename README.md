@@ -12,7 +12,7 @@ Install MoEngage's React Native plugin using the npm package manager.
 | Core Plugin            | react-native-moengage          | [![npm](https://img.shields.io/npm/v/react-native-moengage.svg?maxAge=2592000)](https://www.npmjs.com/package/react-native-moengage)                     |
 | Inbox Plugin           | react-native-moengage-inbox    | [![npm](https://img.shields.io/npm/v/react-native-moengage-inbox.svg?maxAge=2592000)](https://www.npmjs.com/package/react-native-moengage-inbox)         |
 | Geofence Plugin        | react-native-moengage-geofence | [![npm](https://img.shields.io/npm/v/react-native-moengage-geofence.svg?maxAge=2592000)](https://www.npmjs.com/package/react-native-moengage-geofence)   |
-| Cards Plugin           | react-native-moengage-cards    | [![npm](https://img.shields.io/npm/v/react-native-moengage-cards.svg?maxAge=2592000)](https://www.npmjs.com/package/react-native-moengage-cards)         |
+| Cards Plugin           | react-native-moengage-cards    | [![npm](https://img.shields.io/npm/v/react-native-moengage-cards.svg)](https://www.npmjs.com/package/react-native-moengage-cards)         |
 
 Core Plugin
 ```
