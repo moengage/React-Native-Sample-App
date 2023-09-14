@@ -76,13 +76,6 @@ Replace `sdkVersion` with the available version
 | MoEngage Cards Core                       | cards-core           | ![MavenBadge](https://maven-badges.herokuapp.com/maven-central/com.moengage/cards-core/badge.svg)           |
 
 #### iOS
-Install the native MoEngage iOS SDK by using CocoaPods as described here: https://docs.moengage.com/docs/sdk-integration#section-integration-through-cocoapods
-
-NOTE :
-Incase if you get errors in the test targets of the project, go to build settings of the test target and add -lc++ flag to Other Linker Flags as shown below :
-
-![Build Settings](https://user-images.githubusercontent.com/15011722/31492360-4ca64ff8-af68-11e7-92f6-4743121b41d8.png)
-
-Thats it!! SDK is successfully installed in the project, and ready to use.
+There are no additional steps required for installation.
 
 For more info on how to use react-native-moengage, refer to our developer docs: https://developers.moengage.com/hc/en-us/categories/4404199274900-React-Native-SDK
