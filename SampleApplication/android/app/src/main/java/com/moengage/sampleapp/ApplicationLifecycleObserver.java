@@ -21,8 +21,12 @@ public class ApplicationLifecycleObserver implements DefaultLifecycleObserver {
 
   @Override public void onStart(@NonNull LifecycleOwner owner) {
     DefaultLifecycleObserver.super.onStart(owner);
-    MiPushHelper.INSTANCE.initialiseMiPush(context, "5601804211309",
-        "2882303761518042309", Region.Global);
+		MiPushHelper.INSTANCE.initialiseMiPush(
+			context,
+			"YOUR_APP_KEY",
+			"YOUR_APP_ID",
+			Region.Global // The region in which the Mi data should reside
+		);
   }
 
   @Override public void onResume(@NonNull LifecycleOwner owner) {

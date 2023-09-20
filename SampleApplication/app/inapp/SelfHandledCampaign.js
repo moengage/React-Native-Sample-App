@@ -1,5 +1,5 @@
-import React, {PureComponent} from 'react';
-import {View, Text, Modal, StatusBar, TouchableOpacity} from 'react-native';
+import React, { PureComponent } from 'react';
+import { View, Text, Modal, StatusBar, TouchableOpacity } from 'react-native';
 import ReactMoE from 'react-native-moengage';
 import MOEStyles from '../MoeStyleSheet';
 
@@ -10,16 +10,21 @@ export default class SelfHandledCampaign extends PureComponent {
   }
 
   componentDidMount() {
+    // Call this whenever the Self Handled InApp is shown to the user
     ReactMoE.selfHandledShown(this.info);
   }
 
   handleNonPrimaryActionTap = () => {
     this.props.setVisible(false);
+
+    // Call this whenever the Self Handled InApp is clicked
     ReactMoE.selfHandledClicked(this.info);
   };
 
   handleDismissTap = () => {
     this.props.setVisible(false);
+
+    // Call this whenever the Self Handled InApp is dismissed
     ReactMoE.selfHandledDismissed(this.info);
   };
 
@@ -28,6 +33,7 @@ export default class SelfHandledCampaign extends PureComponent {
       return null;
     }
 
+    // Your custom logic to build and show the SelfHandled InApp
     return (
       <View>
         <StatusBar backgroundColor={'#088A85'} />

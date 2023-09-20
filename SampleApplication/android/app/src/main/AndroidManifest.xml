@@ -22,6 +22,8 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+
+      <!-- MoEngage FCM service to register Token and Show Push Notification -->
        <service
            android:name="com.moengage.firebase.MoEFireBaseMessagingService"
            android:exported="false"
@@ -31,6 +33,7 @@
          </intent-filter>
        </service>
 
+      <!-- MoEngage service to Process MI Token and Notification -->
        <receiver
            android:name="com.moengage.push.amp.plus.MiPushReceiver"
            android:exported="true">

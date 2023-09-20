@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   ScrollView,
   Text,
@@ -31,13 +31,25 @@ function validateString(value) {
   return typeof value === 'string';
 }
 
-const InAppScreen = ({navigation}) => {
+const InAppScreen = ({ navigation }) => {
+
   const [isVisible, setIsVisible] = useState(false);
   const [selfHandledData, setSelfHandledData] = useState();
 
   function setVisible(value) {
     setIsVisible(value);
   }
+
+  /**
+   * Add the listener to get the SelfHandled InApp Payload.
+   */
+  ReactMoE.setEventListener('inAppCampaignSelfHandled', payload => {
+    if (payload && Object.keys(payload).length !== 0) {
+      setSelfHandledData(payload);
+      setIsVisible(true);
+    }
+  });
+
   return (
     <View>
       <StatusBar backgroundColor={'#088A85'} />
@@ -51,18 +63,17 @@ const InAppScreen = ({navigation}) => {
               />
             </View>
           ) : null}
-          <TouchableOpacity onPress={() => ReactMoE.showInApp()}>
+          <TouchableOpacity onPress={() => {
+            // Call this method to show the InApp
+            ReactMoE.showInApp();
+          }}>
             <Text style={MOEStyles.title}>{SHOW_INAPP}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
+              // Call this method to get the SelfHandled InApp,
+              // `inAppCampaignSelfHandled` listener should be added before calling this method
               ReactMoE.getSelfHandledInApp();
-              ReactMoE.setEventListener('inAppCampaignSelfHandled', payload => {
-                if (payload && Object.keys(payload).length !== 0) {
-                  setSelfHandledData(payload);
-                  setIsVisible(true);
-                }
-              });
             }}>
             <Text style={MOEStyles.title}>{SHOW_SELF_HANDLED}</Text>
           </TouchableOpacity>
@@ -72,12 +83,18 @@ const InAppScreen = ({navigation}) => {
                 'Enter Context',
                 'use comma for multiple values',
                 [
-                  {text: 'Cancel'},
+                  { text: 'Cancel' },
                   {
                     text: 'OK',
                     onPress: text => {
                       const result = text.split(',');
                       if (validateArrayOfString(result)) {
+                        /**
+                         * Set the current context of the screen.
+                         * This will be used to decide whether the InApp should be shown in the current context or not
+                         * 
+                         * Notes: InApp Context can be added during campaign creation
+                         */
                         ReactMoE.setCurrentContext(result);
                       }
                     },
@@ -90,7 +107,13 @@ const InAppScreen = ({navigation}) => {
             }>
             <Text style={MOEStyles.title}>{SET_CURRENT_CONTEXT}</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => ReactMoE.resetCurrentContext()}>
+          <TouchableOpacity onPress={() => {
+            /**
+             * Reset the current context. 
+             * Required only if you have set any context for the screen using `setCurrentContext`
+             */
+            ReactMoE.resetCurrentContext()
+          }}>
             <Text style={MOEStyles.title}>{RESET_CURRENT_CONTEXT}</Text>
           </TouchableOpacity>
         </View>
