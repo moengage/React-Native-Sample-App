@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Text, View, StyleSheet, FlatList, TouchableOpacity } from "react-native";
-import CardsHelper from "../CardsHelper";
+import CardsHelper from "../utils/CardsHelper";
 
 const cardHelper = new CardsHelper();
 

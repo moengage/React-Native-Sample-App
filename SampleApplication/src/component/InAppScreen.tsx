@@ -11,8 +11,8 @@ import {
   SET_CURRENT_CONTEXT,
   SHOW_INAPP,
   SHOW_SELF_HANDLED,
-} from '../Constants';
-import MOEStyles from '../MoeStyleSheet';
+} from '../utils/Constants';
+import MOEStyles from '../styles/MoeStyleSheet';
 import ReactMoE from 'react-native-moengage';
 import prompt from 'react-native-prompt-android';
 import SelfHandledCampaign from './SelfHandledCampaign';

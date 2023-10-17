@@ -9,7 +9,8 @@ import {
   ENABLE_AD_ID_TRACKING,
   ENABLE_ANDROID_ID_TRACKING,
   ENABLE_SDK,
-  GEOFENCE_MONITOR,
+  START_GEOFENCE_MONITOR,
+  STOP_GEOFENCE_MONITOR,
   IN_APP,
   LOGOUT,
   MOE_INBOX,
@@ -22,8 +23,8 @@ import {
   DRM_ID_ENABLE,
   DRM_ID_DISABLE,
   SELF_HANDLED_CARDS
-} from './Constants';
-import MOEStyles from './MoeStyleSheet';
+} from '../utils/Constants';
+import MOEStyles from '../styles/MoeStyleSheet';
 import ReactMoE from 'react-native-moengage';
 import ReactMoEGeofence from 'react-native-moengage-geofence';
 
@@ -81,8 +82,12 @@ const HomeScreen = ({ navigation }) => {
       title: MOE_INBOX,
     },
     {
-      id: GEOFENCE_MONITOR,
-      title: GEOFENCE_MONITOR,
+      id: START_GEOFENCE_MONITOR,
+      title: START_GEOFENCE_MONITOR,
+    },
+    {
+      id: STOP_GEOFENCE_MONITOR,
+      title: STOP_GEOFENCE_MONITOR,
     },
     {
       id: ENABLE_SDK,
@@ -160,9 +165,14 @@ const HomeScreen = ({ navigation }) => {
         navigation.navigate('InboxListScreen');
         break;
 
-      case GEOFENCE_MONITOR:
+      case START_GEOFENCE_MONITOR:
         // Start the Geofence, required to show the Geofence Campaign
         ReactMoEGeofence.startGeofenceMonitoring("YOUR_APP_ID");
+        break;
+
+      case STOP_GEOFENCE_MONITOR:
+        // Stop the Geofence
+        ReactMoEGeofence.stopGeofenceMonitoring("YOUR_APP_ID");
         break;
 
       case ENABLE_SDK:

@@ -10,8 +10,8 @@ import {
   ANDROID_PUSH_PAYLOAD,
   ANDROID_PUSH_TOKEN,
   IOS_PUSH_REGISTER,
-} from '../Constants';
-import MOEStyles from '../MoeStyleSheet';
+} from '../utils/Constants';
+import MOEStyles from '../styles/MoeStyleSheet';
 import ReactMoE from 'react-native-moengage';
 
 const PushNotificationScreen = () => {

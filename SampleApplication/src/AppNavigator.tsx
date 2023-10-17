@@ -1,19 +1,20 @@
-import HomeScreen from './app/HomeScreen';
-import InAppScreen from './app//inapp/InAppScreen';
-import SelfHandledCampaign from './app//inapp/SelfHandledCampaign';
-import TrackEventScreen from './app/trackEvents/TrackEventScreen';
-import UserAttributeScreen from './app/userAttributes/UserAttributeScreen';
-import PushNotificationScreen from './app/push/PushNotificationScreen';
-import InboxListScreen from './app/InboxListScreen';
-import CardsScreen from './app/cards/component/CardsScreen';
-import SelfHandledCardUI from './app/cards/component/SelfHandledCardUI';
+import React from 'react';
+import HomeScreen from '../src/component/HomeScreen';
+import InAppScreen from '../src/component/InAppScreen';
+import SelfHandledCampaign from '../src/component/SelfHandledCampaign';
+import TrackEventScreen from '../src/component/TrackEventScreen';
+import UserAttributeScreen from '../src/component/UserAttributeScreen';
+import PushNotificationScreen from '../src/component/PushNotificationScreen';
+import InboxListScreen from '../src/component/InboxListScreen';
+import CardsScreen from '../src/component/CardsScreen';
+import SelfHandledCardUI from '../src/component/SelfHandledCardUI';
+import { navigationRef } from './RootNavigation';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { navigationRef } from './RootNavigation';
 
 const Stack = createNativeStackNavigator()
 
-export default AppNavigator = () => {
+const AppNavigator = () => {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator initialRouteName="HomeScreen" screenOptions={{ headerStyle: { backgroundColor: '#088A85' }, headerTintColor: "#fff", headerTitleStyle: { fontWeight: 'bold' } }}>
@@ -31,3 +32,4 @@ export default AppNavigator = () => {
   );
 }
 
+export default AppNavigator;

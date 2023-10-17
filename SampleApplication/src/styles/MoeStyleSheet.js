@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const MOEStyles = StyleSheet.create({
   mainContainer: {
@@ -14,7 +14,7 @@ const MOEStyles = StyleSheet.create({
     fontSize: 16,
     backgroundColor: '#E6E6E6',
   },
-  view: {marginBottom: 20},
+  view: { marginBottom: 20 },
   selfHandledContainer: {
     flexDirection: 'row',
     marginTop: 16,
@@ -112,5 +112,14 @@ const MOEStyles = StyleSheet.create({
   buttonParent: {
     flexDirection: 'row',
   },
+  textStyleButton: {
+    padding: 12,
+    color: '#088A85',
+    fontWeight: 'bold',
+    marginStart: 14,
+    marginEnd: 14,
+    fontSize: 16,
+    backgroundColor: '#E6E6E6',
+  }
 });
 export default MOEStyles;

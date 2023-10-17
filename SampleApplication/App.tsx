@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
-import AppNavigator from './AppNavigator';
+import AppNavigator from './src/AppNavigator';
 import ReactMoE, {
   MoEInitConfig,
   MoEPushConfig,
   MoEngageLogConfig,
   MoEngageLogLevel
 } from 'react-native-moengage';
-import * as RootNavigation from './RootNavigation';
+import * as RootNavigation from './src/RootNavigation';
 
 const App = () => {
 
@@ -82,7 +82,13 @@ const App = () => {
       new MoEngageLogConfig(MoEngageLogLevel.VERBOSE, true)
     );
 
-    // Initialize the MoEngage Core SDK whenever the component is mounted properly.
+    /**
+     * Initialize the MoEngage Core SDK whenever the component is mounted properly.
+     * 
+     * Notes: 
+     *  1. If you have class based component then do consider initializing the MoEngage SDK in the render() or componentDidMount() function of class component.
+     *  2. You can also initialize the MoEngage SDK without moEInitConfig i.e. `ReactMoE.initialize(APP_ID)`;
+     */
     ReactMoE.initialize(APP_ID, moEInitConfig);
   }, []);
 

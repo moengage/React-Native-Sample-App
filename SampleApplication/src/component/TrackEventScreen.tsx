@@ -10,8 +10,8 @@ import {
   TRACK_EVENT,
   TRACK_EVENTS_WITH_ATTRIBUTE,
   TRACK_NON_INTERACTIVE_EVENT,
-} from '../Constants';
-import MOEStyles from '../MoeStyleSheet';
+} from '../utils/Constants';
+import MOEStyles from '../styles/MoeStyleSheet';
 import ReactMoE, { MoEGeoLocation, MoEProperties } from 'react-native-moengage';
 const TrackEventScreen = () => {
   return (

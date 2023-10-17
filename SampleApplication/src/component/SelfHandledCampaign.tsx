@@ -1,9 +1,16 @@
 import React, { PureComponent } from 'react';
 import { View, Text, Modal, StatusBar, TouchableOpacity } from 'react-native';
-import ReactMoE from 'react-native-moengage';
-import MOEStyles from '../MoeStyleSheet';
+import ReactMoE, { MoESelfHandledCampaignData } from 'react-native-moengage';
+import MOEStyles from '../styles/MoeStyleSheet';
 
-export default class SelfHandledCampaign extends PureComponent {
+type SelfHandledProps = {
+  data: MoESelfHandledCampaignData | undefined,
+  setVisible: (flag: boolean) => void
+}
+export default class SelfHandledCampaign extends PureComponent<SelfHandledProps> {
+
+  info: MoESelfHandledCampaignData
+
   constructor(props) {
     super(props);
     this.info = props.data;
@@ -65,7 +72,7 @@ export default class SelfHandledCampaign extends PureComponent {
             <View style={MOEStyles.selfHandledContainer}>
               <Text style={MOEStyles.selfHandledTextLabels}>Expiry Time: </Text>
               <Text style={MOEStyles.selfHandledTextValues}>
-                {this.info.campaign.dismissInterval}
+                {this.info.campaign.dismissInterval.valueOf()}
               </Text>
             </View>
             <View style={MOEStyles.selfHandledContainer}>

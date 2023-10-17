@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { StyleSheet, TouchableOpacity, Text, Alert, View, Image } from "react-native";
 import { Card, Widget, WidgetType } from "react-native-moengage-cards";
-import { CustomHtmlRender } from "./CustomHtmlRender";
+import { CustomHtmlRender } from "../styles/CustomHtmlRender";
 import { MoEngageLogger } from "react-native-moengage";
 
 export type CardProps = {
@@ -112,7 +112,7 @@ export const BasicCard = (props: CardProps) => {
                     {imageWidget != null && <Image style={styles.imageContainer} source={{ uri: imageWidget.content }} />}
 
                     {/* Check if cards is pinned cards or not */}
-                    {metaData.isPinned && <Image style={styles.pinnedImage} source={require('../../../assets/moe_card_pin.png')} />}
+                    {metaData.isPinned && <Image style={styles.pinnedImage} source={require('../../assets/moe_card_pin.png')} />}
                 </View>
             </TouchableOpacity>
             <View style={styles.textSection}>
@@ -146,7 +146,7 @@ export const BasicCard = (props: CardProps) => {
             <View style={styles.metaSection}>
                 {metaData.updatedTime != -1 && <Text style={styles.metaSectionText}>{getUpdatedTime(metaData.updatedTime)}</Text>}
                 <Text style={[styles.metaSectionText, { textAlign: 'right' }]}>{container.templateType} Template</Text>
-                {metaData.campaignState.isClicked && <Image style={styles.clickedImage} source={require('../../../assets/moe_card_clicked.png')} />}
+                {metaData.campaignState.isClicked && <Image style={styles.clickedImage} source={require('../../assets/moe_card_clicked.png')} />}
             </View>
             <View>
                 {ctaWidget != null

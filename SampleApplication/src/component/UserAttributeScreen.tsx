@@ -26,8 +26,8 @@ import {
   SET_LOCATION,
   SET_UNIQUE_ID,
   SET_USER_NAME,
-} from '../Constants';
-import MOEStyles from '../MoeStyleSheet';
+} from '../utils/Constants';
+import MOEStyles from '../styles/MoeStyleSheet';
 import ReactMoE, { MoEGeoLocation } from 'react-native-moengage';
 
 const UserAttributeScreen = () => {
