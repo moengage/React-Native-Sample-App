@@ -6,6 +6,7 @@
 
 #import <React/RCTAppSetupUtils.h>
 #import <ReactNativeMoEngage/MoEngageInitializer.h>
+#import <MoEngageSDK/MoEngageSDK.h>
 
 #if RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
@@ -35,8 +36,11 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   RCTAppSetupPrepareApp(application);
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
-  [[MoEngageInitializer sharedInstance] initializeDefaultInstance:launchOptions];
 
+  MoEngageSDKConfig *config = [[MoEngageSDKConfig alloc] initWithAppId:@"YOUR APP ID" dataCenter: MoEngageDataCenterData_center_01];
+  config.enableLogs = true;
+  [[MoEngageInitializer sharedInstance] initializeDefaultSDKConfig:config andLaunchOptions:launchOptions];
+  
 #if RCT_NEW_ARCH_ENABLED
   _contextContainer = std::make_shared<facebook:react::ContextContainer const>();
   _reactNativeConfig = std::make_shared<facebook::react::EmptyReactNativeConfig const>();

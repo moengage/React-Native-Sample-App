@@ -34,7 +34,7 @@ $ npm install react-native-moengage-cards
 After installing the plugin move on to platform specific configuration.
 
 #### Android
-Add `mavenCentral()` repository in the project-level `build.gradle` file.
+Add `mavenCentral()` repository in `android/build.gradle` file.
 
 ```groovy
 buildscript { 

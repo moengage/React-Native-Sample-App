@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View } from "react-native";
-import CardsHelper from "../CardsHelper";
+import CardsHelper from "../utils/CardsHelper";
 import { useEffect } from "react";
 import { CardsCategoriesList } from "./CardCategoriesList";
 import { CardsList } from "./CardsList";

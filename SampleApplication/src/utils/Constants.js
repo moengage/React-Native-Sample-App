@@ -52,7 +52,8 @@ export const TRACK_EVENTS_WITH_ATTRIBUTE = 'Track Event with Attributes';
 export const TRACK_NON_INTERACTIVE_EVENT = 'Track NonInteractive Event';
 export const TRACK_EVENT = 'Track event';
 //IOS GEOFENCE
-export const GEOFENCE_MONITOR = 'Start Geofence Monitoring(iOS)';
+export const START_GEOFENCE_MONITOR = 'Start Geofence Monitoring';
+export const STOP_GEOFENCE_MONITOR = 'Stop Geofence Monitoring';
 export const GEOFENCE_FOR_IOS_MESSAGE =
   'Geofence Monitoring is available only in ios platform';
 //PROMPT
